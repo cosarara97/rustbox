@@ -1,5 +1,6 @@
 #![feature(io)]
 #![feature(core)]
+#![feature(old_io)]
 
 extern crate rustbox;
 
@@ -32,7 +33,11 @@ fn main() {
                     _ => { }
                 }
             },
-            Err(e) => panic!("{}", e.description()),
+            Err(s) => match s {
+                //Some(e) => panic!("{}", e.description()),
+                Some(e) => panic!("I can't even print the error"),
+                None => { }
+            },
             _ => { }
         }
     }

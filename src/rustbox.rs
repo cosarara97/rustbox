@@ -3,7 +3,6 @@
 #![feature(core)]
 #![feature(optin_builtin_traits)]
 #![feature(old_io)]
-#![feature(io_ext)]
 
 extern crate libc;
 extern crate termbox_sys as termbox;
@@ -100,21 +99,21 @@ pub type EventError = Option<EventErrorKind::Error>;
 
 pub type EventResult<T> = Result<T, EventError>;
 
-impl Error for EventError {
-    fn description(&self) -> &str {
-        match *self {
-            // TODO: Check errno here
-            Some(EventErrorKind::Error) => "Unknown error.",
-            None => "Unexpected return code."
-        }
-    }
-}
-
-impl fmt::Display for EventError {
-    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
-        write!(fmt, "{}", *self)
-    }
-}
+//impl Error for EventError {
+//    fn description(&self) -> &str {
+//        match *self {
+//            // TODO: Check errno here
+//            Some(EventErrorKind::Error) => "Unknown error.",
+//            None => "Unexpected return code."
+//        }
+//    }
+//}
+//
+//impl fmt::Display for EventError {
+//    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+//        write!(fmt, "{}", *self)
+//    }
+//}
 
 /// Unpack a RawEvent to an Event
 ///
